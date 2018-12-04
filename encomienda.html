@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Pagina Javascrip</title>
+ 
+        <link rel="stylesheet" href="estilos.css">
+</head>
+ 
+<body>
+	
+	<header id="main-header">
+		
+		<a id="logo-header" href="index.html">
+			<span class="site-name">Transportes ETC</span>
+			<span class="site-desc">servicios:Pasajes/Encomiendas/Giros</span>
+		</a> <!-- / #logo-header -->
+ 
+		<nav>
+			<ul>
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="pasajes.html" target="_blank">Pasajes</a></li>
+				<li><a href="encomienda.html">Giros y encomiendas</a></li>
+				<li><a href="sillas.html">Sillas</a></li>
+				<li><a href="contactenos.html">Contactenos</a></li>
+			</ul>
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+ 
+	
+	<section id="main-content">
+	
+		<article>
+			<header>
+				<h1>Empresa de transportes de Colombia</h1>
+			</header>
+			
+			<img src="bus_nuevo.png" alt="" class="imgcenterP">
+			
+	
+			
+			<div class="content">
+				<p>Realizamos envios a todo el pais, debes traernos la cantidad, el tamaño y el peso de aquel producto que desees enviar y tras ello te daremos la tarifa corespondiente al envio, te esperamos ansiosos de darte un gran servicio.</p>
+				<p>El destino del producto debe estar debidamente especificado con cada encomienda, recuerda que la eficiencia de nuestro servicio depende de la claridad de tus especificaciones.</p>
+ 
+			</div>
+			
+		</article> <!-- /article -->
+	
+	</section> <!-- / #main-content -->
+ 
+	
+	
+	<footer id="main-footer">
+		<p>&copy; 2018 <a href="http://localhost/html5.html">ETC.com</a></p>
+	</footer> <!-- / #main-footer -->
+ 
+	<script>
+ 
+	$(function(){
+  $(".slides").slidesjs({
+    play: {
+      active: true,
+        // [boolean] Generate the play and stop buttons.
+        // You cannot use your own buttons. Sorry.
+      effect: "slide",
+        // [string] Can be either "slide" or "fade".
+      interval: 3000,
+        // [number] Time spent on each slide in milliseconds.
+      auto: true,
+        // [boolean] Start playing the slideshow on load.
+      swap: true,
+        // [boolean] show/hide stop and play buttons
+      pauseOnHover: false,
+        // [boolean] pause a playing slideshow on hover
+      restartDelay: 2500
+        // [number] restart delay on inactive slideshow
+    }
+  });
+});
+ 
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Venta de Pasajes</title>
+ 
+        <link rel="stylesheet" href="estilos.css">
+</head>	
+<body onload="recargar();">
+<header id="main-header">
+		
+		<a id="logo-header" href="index.html">
+			<span class="site-name">Transportes ETC</span>
+			<span class="site-desc">servicios:Pasajes/Encomiendas/Giros</span>
+		</a> <!-- / #logo-header -->
+ 
+		<nav>
+			<ul>
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="pasajes.html">Pasajes</a></li>
+				<li><a href="encomienda.html">Giros y encomiendas</a></li>
+				<li><a href="sillas.html">Sillas</a></li>
+				<li><a href="contactenos.html">Contactenos</a></li>
+			</ul>
+		</nav><!-- / nav -->
+ 
+	</header>
+	<section id="main-content">
+	
+		<article>
+			<header>
+				<h1>Empresa de transportes de Colombia</h1>
+			</header>
+			
+			<img src="bus_nuevo.png" alt="" class="imgcenterP">
+			
+		 <!-- /article -->
+	</article>
+			
+<h1> Empresa de transportes ETC </h1>
+<img src="3425-admin.jpg" width=width="300" height="400" alt="">
+<p>La seguridad del cliente, la rapidez  del proceso y el confort del viaje, se convierten en nuestras principales bases para realizar una labor perfecta.  </p>
+
+<p style="color:rgba(255,0,0,0.5);">Red paragraph text</p>
+<h3>... aparta tu puesto aqui ...</h3>
+
+<div id ="capa1" name="capa1"> </div>
+<div id="capa2" name="capa2"> </div>
+
+<div style="text-align: center;">
+<script>
+	
+	var i;
+	var bus;
+	bus = 340;
+	//definiendo un array de 2x5
+var sillas = [
+
+     [1,2,3,4,5],
+     [6,7,8,9,10],
+     [11,12,13,14,15],
+     [16,17,18,19,20],
+     [21,22,23,24,25]
+];
+// Matriz donde se lleva el control de V = vendidos;  D = disponible; R = reservado
+var ocupaciones = [
+
+     ["D","D","D","R","R"],
+     ["V","V","V","V","D"],
+     ["V","V","R","R","V"],
+     ["V","D","D","D","D"],
+     ["R","R","D","D","D"]
+];
+ // registra el cliente :Docuemnto, nombre, puesto, operacion
+var registro = [
+
+     ["D","N","P","O"],
+     ["D","N","P","O"],
+     ["D","N","P","O"],
+     ["D","N","P","O"],
+     ["D","N","P","O"]
+];
+
+muestraPuestos(sillas);
+muestraOcupaciones(ocupaciones);
+
+function muestraOcupaciones(ocupaciones){
+  texto1="<font color='black'>";
+  texto1=texto1+"<table border=1 bgcolor=yellow>" +
+   "<tr><th colspan=5>" + 
+   "Bus No : " + bus + 
+   "</th></tr>";
+  for (i=0; i<=4; i=i+1) {
+
+    texto1=texto1+"<tr><td>" +ocupaciones[i][0]+  "</td>";
+    texto1=texto1+"<td>" + ocupaciones[i][1]+  "</td>";
+    texto1=texto1+"<td>" + ocupaciones[i][2]+  "</td>";
+    texto1=texto1+"<td>" + ocupaciones[i][3]+  "</td>";
+    texto1=texto1+"<td>" + ocupaciones[i][4]+  "</td>";
+    
+  }
+  texto1=texto1+"</table></font><br />";
+	return texto1;
+}
+
+function muestraPuestos(sillas){
+ 
+	texto="<font color='white'>";
+  texto=texto+"<table border=1 bgcolor=blue>" +
+   "<tr><th colspan=5>" + 
+   "Bus No : " + bus + 
+   "</th></tr>";
+  for (i=0; i<=4; i=i+1) {
+
+    texto=texto+"<tr><td>" + sillas[i][0]+  "</td>";
+    texto=texto+"<td>" + sillas[i][1]+  "</td>";
+    texto=texto+"<td>" + sillas[i][2]+  "</td>";
+    texto=texto+"<td>" + sillas[i][3]+  "</td>";
+    texto=texto+"<td>" + sillas[i][4]+  "</td>";
+
+  }
+  texto=texto+"</table></font><br />" ;
+return texto;
+
+
+}
+
+
+</script>
+
+<script >
+
+function validarEntero(valor){ 
+      //intento convertir a entero. 
+     //si era un entero no le afecta, si no lo era lo intenta convertir 
+     valor = parseInt(valor) 
+
+      //Compruebo si es un valor numérico 
+      if (isNaN(valor)) { 
+            //entonces (no es numero) devuelvo el valor cadena vacia 
+            return "" 
+      }else{ 
+            //En caso contrario (Si era un número) devuelvo el valor 
+            return valor 
+      } 
+} 
+
+    
+function venderDisponible(puesto){
+  var i;
+  var j;
+  var fila;
+  var columna;
+
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      if (sillas[i][j]==puesto) {
+        fila = i;
+        columna = j;
+      }											//PROCESOS DE BUSQUEDA DE MATRIZ Y CAMBIO DE LETRA A VENDIDO
+    }
+  }
+  if (ocupaciones[fila][columna] == "V") {
+    alert("El puesto ya esta vendido")
+  }
+    else{
+        ocupaciones[fila][columna]="V"
+        alert("Compra realizada")
+        recargar();
+    }
+        
+}
+
+function reservadoDisponible(){
+	
+  puesto=eval(document.fvalida.puesto.value); 	
+  var i;
+  var j;
+  var fila;
+  var columna;
+	
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      if (sillas[i][j]==puesto) {
+        fila = i;
+        columna = j;
+      }											//PROCESOS DE BUSQUEDA DE MATRIZ Y CAMBIO DE LETRA A RESERVADO
+    }
+  }
+	
+  if (ocupaciones[fila][columna] == "V") {
+    alert("El puesto ya esta vendido")
+  }
+    else{
+        ocupaciones[fila][columna]="R"
+        alert("Se reservo el puesto")
+        recargar();
+    }
+        
+}
+
+
+function liberarDisponible(){
+	
+  puesto=eval(document.fvalida.puesto.value); 	
+  var i;
+  var j;
+  var fila;
+  var columna;
+	
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      if (sillas[i][j]==puesto) {
+        fila = i;
+        columna = j;
+      }											//PROCESOS DE BUSQUEDA DE MATRIZ Y CAMBIO DE LETRA A LIBERAR
+    }
+  }
+	
+  if (ocupaciones[fila][columna] == "D") {
+    alert("El puesto ya esta disponible")
+  }
+    else{
+		if (ocupaciones[fila][columna] == "V") {
+    		alert("El puesto fue liberado")
+		
+        	ocupaciones[fila][columna]="D"
+        
+        	recargar();
+    	}else{
+			if (ocupaciones[fila][columna] == "R") {
+				alert("El puesto fue liberado")
+		
+        		ocupaciones[fila][columna]="D"
+        
+        		recargar();
+			}
+		}
+        
+	}	
+}
+    
+function venderPuesto() {
+// funcion dode se valida el nombre, docuemento y el puesto
+
+ if (document.fvalida.nombre.value.length==0){
+  alert("Debe ingresar su nombre")
+  document.fvalida.nombre.focus()
+  return 0;
+}
+
+documento = document.fvalida.documento.value
+documento = validarEntero(documento)
+document.fvalida.documento.value=documento
+if (documento==""){
+  alert("Debe ingresar un número entero en  documento.")
+  document.fvalida.documento.focus()
+  return 0;
+}else{
+  if (documento< 0){
+    alert("Debe ser un numero positivo")
+    document.fvalida.documento.focus()
+    return 0;
+  }
+}
+puesto = document.fvalida.puesto.value
+puesto = validarEntero(puesto)
+
+if (puesto==0){
+  alert("Debe ingresar el numero de puesto")
+  document.fvalida.puesto.focus()
+  return 0;
+}else {
+  if(puesto > 25){
+   alert("El puesto esta entre 1 y 25")
+   document.fvalida.puesto.focus()
+   return 0;
+ }
+}
+venderDisponible(puesto);
+muestraPuestos(sillas);
+muestraOcupaciones(ocupaciones);	
+}
+
+function recargar(){
+   
+    txt=muestraPuestos(sillas);
+	txt2=muestraOcupaciones(ocupaciones);
+	
+    document.getElementById("capa1").innerHTML = txt;
+	document.getElementById("capa2").innerHTML = txt2; //  refrescar la tabla de pasajeros
+	
+    
+}
+    
+
+
+
+</script>
+
+<form name = "fvalida">
+ <table>
+
+   <tr>
+     <td>Nombre: </td>
+     <td><input type="text" name="nombre" size="30" maxlength="100"></td>
+   </tr>
+   <tr>
+     <td>Documento: </td>
+     <td><input type="text" name="documento" size="13" maxlength="13"></td>
+   </tr>
+   <tr>
+     <td>Puesto: </td>
+     <td><input type="text" name="puesto" size="3" maxlength="2"></td>
+   </tr>
+   
+  <tr>
+    <td ><input type="button" value="Vender" onclick="venderPuesto();"></td>          // botones de actividad
+    <td ><input type="button" value="Reservar" onclick="reservadoDisponible()"></td>
+    <td ><input type="button" value="Liberar" onclick="liberarDisponible()"></td>
+  </tr>
+</table>
+</form>
+
+</div>
+</section>
+ 
+
+</body>
+</html>
